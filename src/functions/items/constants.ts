@@ -3,4 +3,6 @@ const author = {
   lastname: "Álvarez Leyton",
 };
 
-export { author };
+const meliAPIURL = process.env.MELI_API_URL || "https://api.mercadolibre.com";
+
+export { author, meliAPIURL };

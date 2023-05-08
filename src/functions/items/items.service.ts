@@ -1,10 +1,10 @@
 import axios from "axios";
-import { author } from "./constants";
+import { author, meliAPIURL } from "./constants";
 
 async function getProductDetail(id: string) {
   const [itemRes, descriptionRes] = await Promise.all([
-    axios.get(`https://api.mercadolibre.com/items/${id}`),
-    axios.get(`https://api.mercadolibre.com/items/${id}/description`),
+    axios.get(`${meliAPIURL}/items/${id}`),
+    axios.get(`${meliAPIURL}/items/${id}/description`),
   ]);
 
   const item = {
@@ -26,7 +26,7 @@ async function getProductDetail(id: string) {
 
 async function searchProducts(query, offset: number, limit: number) {
   const searchRes = await axios.get(
-    `https://api.mercadolibre.com/sites/MLA/search?q=${query}&offset=${offset}&limit=${limit}`
+    `${meliAPIURL}/sites/MLA/search?q=${query}&offset=${offset}&limit=${limit}`
   );
 
   const categories = searchRes.data.filters
